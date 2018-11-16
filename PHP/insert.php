@@ -51,13 +51,13 @@ $MysqlStatement_select->execute($title, $first, $last, $company, $address, $post
 echo "<br /> SQL Statement: <br/>" . $MysqlStatement_select->sql;
 
 
-$last_insert_id = $Mysql->insert_id;
-echo "<br />lalala" . $last_insert_id;
+$last_insert_id = $MysqlStatement_select->insert_id;
+echo "<br />customer id ist: " . $last_insert_id;
 
 
-$sql = "INSERT INTO customer_login (email, pw) VALUES (:0, :1)";
+$sql = "INSERT INTO customer_login (email, pw, customer_id) VALUES (:0, :1, :2)";
 $MysqlStatement_select = $Mysql->getMysqlStatement($sql);
-$MysqlStatement_select->execute($email, $pw);
+$MysqlStatement_select->execute($email, $pw, $last_insert_id);
 
 echo "<br /> SQL Statement: <br/>" . $MysqlStatement_select->sql;
 

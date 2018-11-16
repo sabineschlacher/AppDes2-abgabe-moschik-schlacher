@@ -33,7 +33,7 @@ $Mysql = new Mysql();
 /* settings data if a new version is out there and the std STP ID */
 //SELECT * FROM user WHERE name="matthias" AND pw="1234";
 
-$sql = "SELECT * FROM customer-login WHERE email=:0 AND pw=:1";
+$sql = "SELECT * FROM customer_login WHERE email=:0 AND pw=:1";
 $MysqlStatement_select = $Mysql->getMysqlStatement($sql);
 $MysqlStatement_select->execute($_POST[email], $_POST[pw]);
 
@@ -53,6 +53,17 @@ $MysqlStatement_select->execute($_POST[email], $_POST[pw]);
         </form>
         <a id="link" href="#pagetwo" >Neues Konto erstellen</a>
     </div>
+
+<?php
+
+    if($MysqlStatement_select->num_rows == 1){
+    header("Location:logged-in.php");
+    exit();
+    } 
+
+    else { echo "login ist fehlgeschlagen";}
+    ?>
+
 
     <?php echo "<br /> SQL Statement: <br/>" . $MysqlStatement_select->sql; ?>
 
@@ -98,6 +109,20 @@ $MysqlStatement_select->execute($_POST[email], $_POST[pw]);
 
             <input type="submit" value="Absenden" />
         </form>          
+    </div>
+
+</div>
+
+
+<div data-role="page" id="pagethree">
+    
+    <div data-role="header">
+        <h1>Einkaufen</h1>
+    </div>
+
+    <div data-role="main" class="ui-content">
+        <a href="#pageone" data-transition="none">logout</a>
+
     </div>
 
 </div>
