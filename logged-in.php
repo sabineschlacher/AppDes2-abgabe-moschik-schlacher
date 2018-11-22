@@ -80,10 +80,6 @@ $Mysql = new Mysql();
 <div class="product-slider">
     <div>Slide 1</div>
     <div>Slide 2</div>
-    <div>Slide 1</div>
-    <div>Slide 2</div>
-    <div>Slide 1</div>
-    <div>Slide 2</div>
 </div>
     
 
@@ -101,8 +97,8 @@ $Mysql = new Mysql();
 $(document).ready(function(){
   $('.product-slider').slick({
     infinite: true,
-    slidesToShow: 3,
-    slidesToScroll: 3
+  slidesToShow: 3,
+  slidesToScroll: 3
   });
 });
 </script>

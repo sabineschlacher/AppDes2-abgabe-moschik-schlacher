@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="utf-8">
+    <!-- Include meta tag to ensure proper rendering and touch zooming -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Include jQuery Mobile stylesheets -->
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/slick/slick.css"/>
+
+</head>
+<body>
+
+	<div data-role="page" id="login">
+	    <div data-role="header">
+	        <h1>Login</h1>
+	    </div>
+
+	    <div data-role="main" class="ui-content">
+	            Name: <input type="text" name="email" id="email"><br>
+	            PW: <input type="text" name="pw" id="pw"><br>
+	            <button onclick="login()">Login</button>
+	        <a id="link" href="#register">Neues Konto erstellen</a>
+	    </div>
+	</div>
+
+	<div data-role="page" id="register">
+	    <div data-role="header">
+	        <h1>Registrieren</h1>
+	    </div>
+
+    	<div data-role="main" class="ui-content">
+	        <a href="#login" data-transition="none">zurück</a>
+	            
+	            <input type="text" placeholder="Firma" name="company" data-mini="true" id="reg_company" />
+
+	            <select placeholder="Anrede" name="title" data-mini="true" id="reg_gender">
+	                <option value="" disabled selected>Anrede</option>
+	                <option value="woman">Frau</option>
+	                <option value="man">Herr</option>
+	            </select>
+	            
+	            <input type="text" placeholder="Name *" name="last" data-mini="true" id="reg_lastname"/>
+	            <input type="text" placeholder="Vorname *" name="first" data-mini="true" id="reg_firstname">
+	            <input type="number" placeholder="Telefonnummer *" name="phone" data-mini="true" id="reg_tel"/>
+	            <input type="text" placeholder="Straße *" name="address" data-mini="true" id="reg_street"/>
+	            <input type="number" placeholder="PLZ *" name="postal" data-mini="true" id="reg_plz" />
+	            <input type="text" placeholder="Ort *" name="city" data-mini="true" id="reg_city" />
+	            <input type="text" placeholder="E-Mail *" name="email" data-mini="true" id="reg_mail"/>
+	            <input type="text" placeholder="Passwort *" name="pw" data-mini="true" id="reg_password" />
+	            <button id="registernow" onclick="register()">Jetzt registrieren</button>         
+	    </div>
+	</div>
+
+	<div data-role="page" id="einkaufen">
+	    <div data-role="header">
+	        <h1>Einkaufen</h1>
+	    </div>
+
+	    <div data-role="main" class="ui-content">
+	        <a href="#login" data-transition="none">logout</a>
+	        <div id="einkaufen_products"></div>
+	    </div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script type="text/javascript" src="assets/slick/slick.min.js"></script>
+	
+	<script>
+		$(document).ready(function(){
+
+		  getProduct();
+		  setTimeout(function(){
+			  $('.product-slider').slick({
+			      infinite: true,
+				  slidesToShow: 2,
+				  slidesToScroll: 2
+				 });
+		  }, 1000);
+		});
+
+		function login(){
+			var username = $('#email').val();
+			var password = $('#pw').val();
+			var userdata = [username, password];
+			
+			$.ajax({
+			  type: "POST",
+			  url: 'login.php',
+			  cache: false,
+			  data: {data: userdata},
+			  success: function(result){
+			  	if(result == 1){
+			  		$(':mobile-pagecontainer').pagecontainer('change', '#einkaufen');
+			  	}
+			  	else{
+			  		alert("Fehlgeschlagen");
+			  	}
+			  }
+			});
+		}
+
+		function register(){
+			var company = $('#reg_company').val();
+			var gender = $('#reg_gender').val();
+			var lastname = $('#reg_lastname').val();
+			var firstname = $('#reg_firstname').val();
+			var tel = $('#reg_tel').val();
+			var street = $('#reg_street').val();
+			var plz = $('#reg_plz').val();
+			var city = $('#reg_city').val();
+			var mail = $('#reg_mail').val();
+			var password = $('#reg_password').val();
+			var registerdata = [company, gender, lastname, firstname, tel, street, plz, city, mail, password];
+
+			$.ajax({
+			  type: "POST",
+			  url: 'register.php',
+			  cache: false,
+			  data: {data: registerdata},
+			  success: function(result){
+			  	$(':mobile-pagecontainer').pagecontainer('change', '#einkaufen');
+			  }
+			});
+		}
+
+		function getProduct(){
+			$.ajax({
+			  type: "POST",
+			  url: 'get_products.php',
+			  cache: false,
+			  success: function(result){
+			  	$('#einkaufen_products').html(result);
+			  }
+			});
+		}
+	</script>
+</body>
+</html>
