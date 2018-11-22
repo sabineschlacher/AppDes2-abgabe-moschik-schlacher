@@ -16,6 +16,11 @@ include("PHP/MysqlStatement.class.php");
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <!-- Include the jQuery Mobile library -->
     <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="assets/slick/slick.css"/>
+   
+                
+
 </head>
 <body>
 
@@ -40,6 +45,13 @@ $Mysql = new Mysql();
 
 ?>
 
+<div data-role="navbar" id="menu">
+
+
+
+</div> 
+<!-- ende navbar -->
+
 
 <div data-role="page" id="home">
     <div data-role="header">
@@ -49,18 +61,31 @@ $Mysql = new Mysql();
 
     <?php
 
-    echo $MysqlStatement_select_products->sql;
+    echo $MysqlStatement_select_products->sql; 
 
-    while ($products = $MysqlStatement_select_products->fetchArray()) {
+    ?>
+
+<!--<div class="product-slider">
+ <?php
+  while ($products = $MysqlStatement_select_products->fetchArray()) {
         echo "<br /> <div > " . $products['name'] . "</div>";
         echo "<div > " . $products['name_latin'] . "</div>";
         echo "<div > " . $products['description'] . "</div>";
         echo "<div > €" . $products['price'] . "/100g</div>";
         
         }
-
-
     ?>
+</div>-->
+
+<div class="product-slider">
+    <div>Slide 1</div>
+    <div>Slide 2</div>
+    <div>Slide 1</div>
+    <div>Slide 2</div>
+    <div>Slide 1</div>
+    <div>Slide 2</div>
+</div>
+    
 
         <a href="PHP/logout.php" data-transition="none">abmelden</a>
 
@@ -70,7 +95,17 @@ $Mysql = new Mysql();
 
 
 
+ <script type="text/javascript" src="assets/slick/slick.min.js"></script>
+ <script> 
 
+$(document).ready(function(){
+  $('.product-slider').slick({
+    infinite: true,
+    slidesToShow: 3,
+    slidesToScroll: 3
+  });
+});
+</script>
 
 </body>
 </html>

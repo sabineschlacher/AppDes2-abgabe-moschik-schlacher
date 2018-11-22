@@ -55,28 +55,25 @@ $MysqlStatement_select->execute($_POST[email], $_POST[pw]);
     </div>
 
 <?php
-
     if($MysqlStatement_select->num_rows >= 1){
-    header("Location:logged-in.php");
-    exit();
+        header("Location:logged-in.php");
+        exit();
     } 
 
     else { echo "login ist fehlgeschlagen";}
-    ?>
+?>
 
 
     <?php echo "<br /> SQL Statement: <br/>" . $MysqlStatement_select->sql; ?>
 
     <?php echo "<br /> NUM: " . $MysqlStatement_select->num_rows; ?>
 
-
-    <?php
-
+<?php
     echo "<br /> Beliebiger Inhalt: <br />";
     while ($data = $MysqlStatement_select->fetchArray()) {
-        echo $data['content'];
-    }
-    ?>
+            echo $data['content'];
+        }
+?>
 </div>
 
 
