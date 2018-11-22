@@ -31,13 +31,38 @@ include("PHP/MysqlStatement.class.php");
 $Mysql = new Mysql();
 
 
+//get products
+
+    $sql = "SELECT name, name_latin, description, price FROM products WHERE availability=:0";
+    $MysqlStatement_select_products = $Mysql->getMysqlStatement($sql);
+    $MysqlStatement_select_products->execute(1); //nur produkte mit availability 1 werden angezeigt
+  
+
 ?>
 
-<div data-role="page" id="pageone">
+
+<div data-role="page" id="home">
     <div data-role="header">
         <h1>Einkaufen</h1>
 
     </div>
+
+    <?php
+
+    echo $MysqlStatement_select_products->sql;
+
+    while ($products = $MysqlStatement_select_products->fetchArray()) {
+        echo "<br /> <div > " . $products['name'] . "</div>";
+        echo "<div > " . $products['name_latin'] . "</div>";
+        echo "<div > " . $products['description'] . "</div>";
+        echo "<div > €" . $products['price'] . "/100g</div>";
+        
+        }
+
+
+    ?>
+
+        <a href="PHP/logout.php" data-transition="none">abmelden</a>
 
 
 </div>

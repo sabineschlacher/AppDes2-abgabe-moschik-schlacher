@@ -56,7 +56,7 @@ $MysqlStatement_select->execute($_POST[email], $_POST[pw]);
 
 <?php
 
-    if($MysqlStatement_select->num_rows == 1){
+    if($MysqlStatement_select->num_rows >= 1){
     header("Location:logged-in.php");
     exit();
     } 
