@@ -9,6 +9,11 @@
     <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
     <link rel="stylesheet" type="text/css" href="assets/slick/slick.css"/>
 
+	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script type="text/javascript" src="assets/slick/slick.min.js"></script>
+
+
 </head>
 <body>
 
@@ -64,20 +69,36 @@
 	        <a href="#login" data-transition="none">logout</a>
 	        <div id="einkaufen_products"></div>
 	        <a href="#info" data-rel="popup">mehr lesen</a>
+
+	    	<form>
+    			<fieldset data-role="controlgroup" data-type="horizontal">
+	        		<legend>ODER:</legend>
+			        <input type="radio" name="radio-choice-h-2" id="radio-choice-h-2a" value="on" checked="checked">
+			        <label for="radio-choice-h-2a">Stk.</label>
+			        <input type="radio" name="radio-choice-h-2" id="radio-choice-h-2b" value="off">
+			        <label for="radio-choice-h-2b">KG</label>
+	    		</fieldset>
+			</form>
 	    </div>
 
+
 	    <div data-role="popup" id="info">
-			<div load="getProductInfo()">This is a completely basic popup, no options set.</div>
+			<div id="getProductInfo"></div>	
 		</div>
 
 	</div>
 
 
-	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-    <script type="text/javascript" src="assets/slick/slick.min.js"></script>
 	
 	<script>
+
+		 $(document).on({
+   			popupbeforeposition: function() {
+   				getProductInfo();
+   			 }
+		});
+
+
 		$(document).ready(function(){
 
 		  getProduct();
@@ -87,9 +108,10 @@
 				  slidesToShow: 1,
 				  slidesToScroll: 1
 				 });
-		  }, 1000);
+		  }, 10);
 
 		});
+
 
 		function login(){
 			var username = $('#email').val();
@@ -103,7 +125,11 @@
 			  data: {data: userdata},
 			  success: function(result){
 			  	if(result == 1){
-			  		$(':mobile-pagecontainer').pagecontainer('change', '#einkaufen');
+
+			  		$.mobile.changePage( "#einkaufen", { transition: "slideup", changeHash: true , pageReload: true});
+			  		location.reload();
+
+			  		//$(':mobile-pagecontainer').pagecontainer('change', '#einkaufen');
 			  	}
 			  	else{
 			  		alert("Fehlgeschlagen");
@@ -149,12 +175,20 @@
 
 
 		function getProductInfo(){
+
+			console.log("hallo:" + $('.slick-active').text());
+			var slickActive = $('.slick-active').attr('data-slick-index');
+			console.log (slickActive);
+
+
 			$.ajax({
 			  type: "POST",
 			  url: 'productInfo.php',
-			  cache: false,
+			  cache: false, 
+			  data: {productRow: slickActive},
 			  success: function(result){
 			  	$('#getProductInfo').html(result);	
+			  	//console.log("Result: " + result);
 			  }
 			});
 		}

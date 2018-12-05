@@ -12,6 +12,8 @@
 	    die("Connection failed: " . $conn->connect_error);
 	} 
 
+	//echo "funktioniert" . $_POST[productRow];
+
 	$sql = "SELECT * FROM products WHERE availability = 1";
 	$result = $conn->query($sql);
 
@@ -19,12 +21,21 @@
 	    // output data of each row
 	    echo '<div class="product-slider">';
 
+	    $i = 0;
+
 	    while($row = $result->fetch_assoc()) {
 
-	        echo "<div>" . $row['info'] . "</div>";
+	    	if($i== $_POST[productRow]){
+		        echo "<div>" . $row['info'] . "</div>";
+		    	} 
+
+	    	$i++;
+
 	    }
 
 	    echo '</div>';
+
+
 	} else {
 	    echo "0 results";
 	}
