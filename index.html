@@ -25,6 +25,7 @@
 	    </div>
 	</div>
 
+
 	<div data-role="page" id="register">
 	    <div data-role="header">
 	        <h1>Registrieren</h1>
@@ -53,6 +54,7 @@
 	    </div>
 	</div>
 
+
 	<div data-role="page" id="einkaufen">
 	    <div data-role="header">
 	        <h1>Einkaufen</h1>
@@ -61,8 +63,15 @@
 	    <div data-role="main" class="ui-content">
 	        <a href="#login" data-transition="none">logout</a>
 	        <div id="einkaufen_products"></div>
+	        <a href="#info" data-rel="popup">mehr lesen</a>
 	    </div>
+
+	    <div data-role="popup" id="info">
+			<div load="getProductInfo()">This is a completely basic popup, no options set.</div>
+		</div>
+
 	</div>
+
 
 	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
@@ -75,10 +84,11 @@
 		  setTimeout(function(){
 			  $('.product-slider').slick({
 			      infinite: true,
-				  slidesToShow: 2,
-				  slidesToScroll: 2
+				  slidesToShow: 1,
+				  slidesToScroll: 1
 				 });
 		  }, 1000);
+
 		});
 
 		function login(){
@@ -132,10 +142,23 @@
 			  url: 'get_products.php',
 			  cache: false,
 			  success: function(result){
-			  	$('#einkaufen_products').html(result);
+			  	$('#einkaufen_products').html(result);	
 			  }
 			});
 		}
+
+
+		function getProductInfo(){
+			$.ajax({
+			  type: "POST",
+			  url: 'productInfo.php',
+			  cache: false,
+			  success: function(result){
+			  	$('#getProductInfo').html(result);	
+			  }
+			});
+		}
+		
 	</script>
 </body>
 </html>
