@@ -26,7 +26,7 @@
 	    while($row = $result->fetch_assoc()) {
 
 	    	if($i== $_POST[productRow]){
-		        echo "<div>" . $row['info'] . "</div>";
+		        echo "<div id='product-pop-up'>" . "<div id='pop-up-text'>". $row['info'] . "</div>" . "</div>";
 		    	} 
 
 	    	$i++;

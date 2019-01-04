@@ -8,6 +8,7 @@
     <!-- Include jQuery Mobile stylesheets -->
     <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
     <link rel="stylesheet" type="text/css" href="assets/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
 
 	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
@@ -18,67 +19,78 @@
 <body>
 
 	<div data-role="page" id="login">
-	    <div data-role="header">
-	        <h1>Login</h1>
-	    </div>
+	  
 
-	    <div data-role="main" class="ui-content">
-	            Name: <input type="text" name="email" id="email"><br>
-	            PW: <input type="text" name="pw" id="pw"><br>
-	            <button onclick="login()">Login</button>
-	        <a id="link" href="#register">Neues Konto erstellen</a>
+	    <div data-role="main" class="ui-content" id="div-login">
+	           <label>E-Mail-Adresse</label> <input type="text" name="email" id="email"><br>
+	            <label>Passwort </label><input type="text" name="pw" id="pw"><br>
+	            <button id="btn-login" onclick="login()">Login</button>
+	       		 <div id="new-account"><a id="link" class="btn-text" href="#register" data-transition="slide">Neues Konto erstellen</a></div>
 	    </div>
 	</div>
 
 
 	<div data-role="page" id="register">
-	    <div data-role="header">
+	    <div data-role="header" id="header-register">
 	        <h1>Registrieren</h1>
+	          <a href="#login" data-transition="none"><img src="assets/back.svg" alt="Zurück" /></a>
 	    </div>
 
-    	<div data-role="main" class="ui-content">
-	        <a href="#login" data-transition="none">zurück</a>
+    	<div data-role="main" class="ui-content" >
 	            
-	            <input type="text" placeholder="Firma" name="company" data-mini="true" id="reg_company" />
+	            <label>Firma</label><input type="text"name="company" data-mini="true" id="reg_company" />
+	            </br> </br>
 
-	            <select placeholder="Anrede" name="title" data-mini="true" id="reg_gender">
+	    		<!--<select placeholder="Anrede" name="title" data-mini="true" id="reg_gender">
 	                <option value="" disabled selected>Anrede</option>
 	                <option value="woman">Frau</option>
 	                <option value="man">Herr</option>
-	            </select>
+	            </select>-->
 	            
-	            <input type="text" placeholder="Name *" name="last" data-mini="true" id="reg_lastname"/>
-	            <input type="text" placeholder="Vorname *" name="first" data-mini="true" id="reg_firstname">
-	            <input type="number" placeholder="Telefonnummer *" name="phone" data-mini="true" id="reg_tel"/>
-	            <input type="text" placeholder="Straße *" name="address" data-mini="true" id="reg_street"/>
-	            <input type="number" placeholder="PLZ *" name="postal" data-mini="true" id="reg_plz" />
-	            <input type="text" placeholder="Ort *" name="city" data-mini="true" id="reg_city" />
-	            <input type="text" placeholder="E-Mail *" name="email" data-mini="true" id="reg_mail"/>
-	            <input type="text" placeholder="Passwort *" name="pw" data-mini="true" id="reg_password" />
-	            <button id="registernow" onclick="register()">Jetzt registrieren</button>         
+	            <label>Name *</label><input type="text"name="last" data-mini="true" id="reg_lastname" required/>
+	        	</br> </br>
+	            <label>Vorname *</label><input type="text" name="first" data-mini="true" id="reg_firstname" required />
+	            </br> </br>
+	            <label>Telefonnummer *</label><input type="number" name="phone" data-mini="true" id="reg_tel" required/>
+	            </br> </br>
+	            <label>Straße *</label><input type="text" name="address" data-mini="true" id="reg_street" required/>
+	            </br> </br>
+	            <label>PLZ *</label><input type="number" name="postal" data-mini="true" id="reg_plz" required />
+	            </br> </br>
+	            <label>Ort *</label><input type="text" name="city" data-mini="true" id="reg_city"required />
+	            </br> </br>
+	            <label>E-Mail *</label><input type="text" name="email" data-mini="true" id="reg_mail"required />
+	            </br> </br>
+	           <label>Passwort *</label> <input type="text" name="pw" data-mini="true" id="reg_password" required />
+	           </br> </br>
+	            <button id="btn-register" onclick="register()" >Jetzt registrieren</button>         
 	    </div>
 	</div>
 
 
 	<div data-role="page" id="einkaufen">
-	    <div data-role="header">
+	    <div data-role="header" id="header-shop">
 	        <h1>Einkaufen</h1>
+	         <a href="#login" data-transition="none"><img src="assets/logout.svg" alt="Ausloggen" /></a>
 	    </div>
 
-	    <div data-role="main" class="ui-content">
-	        <a href="#login" data-transition="none">logout</a>
-	        <div id="einkaufen_products"></div>
-	        <a href="#info" data-rel="popup">mehr lesen</a>
-
-	    	<form>
-    			<fieldset data-role="controlgroup" data-type="horizontal">
-	        		<legend>ODER:</legend>
-			        <input type="radio" name="radio-choice-h-2" id="radio-choice-h-2a" value="on" checked="checked">
-			        <label for="radio-choice-h-2a">Stk.</label>
-			        <input type="radio" name="radio-choice-h-2" id="radio-choice-h-2b" value="off">
-			        <label for="radio-choice-h-2b">KG</label>
-	    		</fieldset>
-			</form>
+	    <div data-role="main" class="ui-content" id="products">
+	       <div id="product-image"> <img src="assets/trout.svg" alt="Produktbild" />  </div>
+	        <div id="einkaufen_products">
+	        </div>
+	         </br> 
+	        <a href="#info" data-rel="popup" data-overlay-theme="a" id="link2">mehr lesen</a>
+	    	<div id="radio-amount">
+		    	<form>
+	    			<fieldset data-role="controlgroup" data-type="horizontal" >
+		        		<legend id="label-legend">ODER:</legend>
+				        <input type="radio" name="radio-choice-h-2" id="radio-choice-h-2a" value="on" checked="checked">
+				        <label for="radio-choice-h-2a">Stück</label>
+				        <input type="radio" name="radio-choice-h-2" id="radio-choice-h-2b" value="off">
+				        <label for="radio-choice-h-2b">KG</label>
+		    		</fieldset>
+				</form>
+			</div>
 	    </div>
 
 
@@ -103,10 +115,9 @@
 
 		  getProduct();
 		  setTimeout(function(){
-			  $('.product-slider').slick({
-			      infinite: true,
-				  slidesToShow: 1,
-				  slidesToScroll: 1
+			  $('.product-slider').slick({			    
+            	prevArrow:"<button id='arrow-left'><img src='assets/left.svg' alt='nach links'/></button>",
+            	nextArrow:"<button id='arrow-right'><img src='assets/right.svg' alt='nach links'/></button>"
 				 });
 		  }, 10);
 

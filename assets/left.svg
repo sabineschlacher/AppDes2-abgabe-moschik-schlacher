@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="13px" height="24px" viewBox="0 0 13 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>swipe_back</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Screenflow-Kunde" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="04_home" transform="translate(-48.000000, -370.000000)" fill="#192FA7" stroke="#192FA7" stroke-width="0.4">
+            <g id="product" transform="translate(13.000000, 142.000000)">
+                <g id="swipe_back" transform="translate(35.000000, 229.000000)">
+                    <path d="M12.5324425,0.252729967 C12.1922396,-0.0839557872 11.6396282,-0.0843868829 11.2989892,0.252298871 C11.298553,0.252298871 11.298553,0.252729967 11.2981169,0.252729967 L1.0440554,10.3921012 C0.702980277,10.728787 0.702980277,11.2745541 1.04361924,11.611671 L1.0440554,11.6121021 L11.2981169,21.7471624 C11.6387559,22.0842792 12.1918035,22.0842792 12.5324425,21.7471624 C12.8730814,21.4100455 12.8730814,20.8642783 12.5324425,20.5271615 L2.89336296,10.9999462 L12.5324425,1.47273084 C12.8730814,1.13604509 12.8735176,0.590277913 12.5333148,0.253161063 C12.5328786,0.253161063 12.5328786,0.252729967 12.5324425,0.252729967" id="Fill-1" transform="translate(6.788195, 11.000000) rotate(-360.000000) translate(-6.788195, -11.000000) "></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

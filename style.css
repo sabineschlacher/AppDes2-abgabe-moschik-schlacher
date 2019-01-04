@@ -1,0 +1,234 @@
+
+/*general*/
+
+	.ui-content{
+		padding: 48px !important;
+	}
+
+
+	.ui-page-theme-a  {
+		text-shadow: none !important;
+		text-align: center;
+		background-color: white;
+	}
+
+
+	.ui-btn {
+		text-shadow: none !important;
+		text-shadow: none;
+		text-decoration: none;
+		text-transform: uppercase;
+		font-weight: 400;
+		font-size: 15px;
+		letter-spacing: 0.6px;
+		background-color: white !important;
+		border: none;
+	}
+
+
+	.ui-shadow-inset {
+		-webkit-box-shadow: none !important;
+		box-shadow: none !important;
+	}
+
+	.ui-shadow {
+		-webkit-box-shadow: none !important;
+		box-shadow: none !important;
+	}
+
+
+	.ui-input-text{
+		border-style: none;
+	}
+
+
+	.ui-input-text input {
+		background: white;
+		border-radius: 0px;
+
+		text-shadow: none;
+		text-decoration: none;
+		text-transform: uppercase;
+		font-weight: 500;
+		font-size: 15px;
+		letter-spacing: 0.6px;
+
+	}
+
+	input:focus {
+		background: white;
+		border-radius: 0px;
+		-webkit-box-shadow: none !important;
+		box-shadow: none !important;
+		border-bottom: 2px solid #00F8B6 !important;
+	}
+
+
+	body, input, select, textarea, button, .ui-btn{
+		font-family: Roboto, san-serif;
+	}
+
+
+/*text styles*/
+
+	.btn-text, h1, #product-name {
+		text-shadow: none;
+		text-decoration: none;
+		text-transform: uppercase;
+		font-weight: 400;
+		font-size: 15px;
+		letter-spacing: 0.6px;
+	}
+
+	h1, #product-name, #label-legend {
+		font-weight: 500;
+	}
+
+
+	#product-detail {
+		color: #6F6F6F !important;
+		font-size: 15px;
+		font-weight: 400;
+		letter-spacing: 0.6px;
+	}
+
+	.ui-mobile label{
+		color: #6F6F6F;
+		text-align: left;
+		font-size: 15px;
+		font-weight: 400;
+		letter-spacing: 0.6px;
+	}
+
+
+/*login und registrieren*/
+
+
+
+	#email, #pw, #reg_company, #reg_gender, #reg_lastname, #reg_firstname, #reg_tel, #reg_street, #reg_plz, #reg_city, #reg_mail, #reg_password{
+	  	border-bottom: 1px solid #00F8B6;
+	}
+
+
+	#link{
+		margin-bottom: 10px;
+		color: #192FA7;
+		}
+
+	#link2{
+		margin-bottom: 10px;
+		color: #192FA7;
+		text-shadow: none;
+		text-decoration: none;
+		text-transform: uppercase;
+		font-weight: 500;
+		font-size: 15px;
+		letter-spacing: 0.6px;
+		}
+
+	#btn-login {
+		background-color: #192FA7 !important;
+		color: white;
+		border-radius: 0px;
+		height: 50px;
+		width:230px; 
+		margin: auto;
+	}
+
+
+	#btn-register {
+		background-color: #192FA7 !important;
+		color: white;
+		border-radius: 0px;
+		height: 50px;
+		width:230px; 
+		margin: auto;
+	}
+
+	div#div-login {
+		 position: absolute;
+		 top:25%; bottom: 0; left: 0; right: 0;
+		 margin: auto;
+
+	}
+
+	div#new-account{
+		position: absolute;
+		bottom: 5%;
+		margin: auto;
+		left:0; right: 0;
+
+	}
+
+
+	div#header-register, div#header-shop{
+		background: white;
+		height:60px;
+	}
+
+	#header-register h1, #header-shop h1{
+		margin-top: 10px;
+	}
+
+	#header-register a{
+			margin-top: 10px;
+		}
+
+	#product-image{
+		margin-bottom: 20%;
+	}
+
+	#products{
+		margin-top: 10%;
+	}
+
+	div#radio-amount{
+		margin-top:20%;
+	}
+
+	label.ui-btn{
+		width: 80px;
+		background: white;
+		border:none;
+		border-radius: 0px;
+
+		color: #A0A9DA !important;
+		text-align: center !important;
+		text-shadow: none;
+		text-decoration: none;
+		text-transform: uppercase;
+		font-weight: 500;
+		font-size: 15px;
+		letter-spacing: 0.6px;
+
+	}
+
+	label.ui-btn.ui-btn-active.ui-radio-on{
+		border-bottom: 3px solid #00F8B6 !important;
+		border-radius: 0px;
+		color: #192FA7 !important;
+		opacity: 1;
+
+	}
+
+	#arrow-left{
+		display:block !important;
+		position:absolute;
+		left:-20px;
+		bottom:0;
+	}
+
+	#arrow-right{
+		display:block !important;
+		position:absolute;
+		right:-20px;
+		bottom: 0;
+	}
+
+	#product-pop-up{
+
+
+	}
+
+
+

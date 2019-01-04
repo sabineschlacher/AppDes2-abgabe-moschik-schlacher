@@ -20,7 +20,7 @@
 	    echo '<div class="product-slider">';
 
 	    while($row = $result->fetch_assoc()) {
-	        echo "<div>" . $row['name'] . "</br>" . $row['name_latin'] . "</br>" . $row['description'] . "</br>" . $row['price'] . "/100g" ."</div>";
+	        echo "<div>" . "<div id='product-name'>" . $row['name'] . "</div>" . "<div id='product-detail'>" . "</br>" . $row['name_latin'] . "</br>" . $row['description'] . "</br>" . "€ " . $row['price'] . "/ 100g" . "</div>" . "</div>";
 	    }
 
 	    echo '</div>';	    
